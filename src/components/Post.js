@@ -25,17 +25,13 @@ class Post extends Component {
     }
     render() {
         return (
-            <div>
-                <div className="post-container">
-                    { this.props.posts.map(post =>
-                        <div className="post-block" key={post.id}>
-                            <h3>{ post.title }</h3>
-                            <div>{ post.description }</div>
-                            <img className="image" src={"" + this.props.image} alt="post-images"/>
-                        </div>
-                    )}
-                </div>
-
+            <div className="post-container">
+                { this.props.posts.map(post =>
+                    <div className="post-block" key={post.id}>
+                        <div className="post-image" style={{ backgroundImage: `url(${post.image})` }}/>
+                        <h2 className="post-title">{ post.title }</h2>
+                    </div>
+                )}
                 <button onClick={this.handleCreatePost}>new post</button>
             </div>
         );

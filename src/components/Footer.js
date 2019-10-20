@@ -6,7 +6,7 @@ import React from 'react';
 function Footer() {
     return (
         <BrowserRouter>
-            <div className="container">
+            <div className="footer">
                 <nav>
                     <Link to="/about">About</Link>
                     <ul> <Link to="/contacts">Contacts</Link> </ul>

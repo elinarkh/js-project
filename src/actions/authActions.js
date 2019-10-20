@@ -20,6 +20,7 @@ export const userLoginFetch = user => {
                 }
             })
     }
+
 }
 
 export const userPostFetch = user => {
@@ -46,11 +47,11 @@ export const userPostFetch = user => {
     }
 };
 
-export const getProfileFetch = () => {
+/*export const getProfileFetch = () => {
     return dispatch => {
         const token = localStorage.token;
         if (token) {
-            return fetch("http://localhost:3000/api/v1/profile", {
+            return fetch("http://5da5c7ce57f48b0014fbad58.mockapi.io/api/users", {
                 method: "GET",
                 headers: {
                     'Content-Type': 'application/json',
@@ -70,7 +71,7 @@ export const getProfileFetch = () => {
                 })
         }
     }
-}
+}*/
 
 const loginUser = userObj => ({
     type: 'LOGIN_USER',

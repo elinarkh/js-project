@@ -20,3 +20,20 @@
 .App-link {
   color: #09d3ac;
 }
+
+.post-block {
+  display: flex;
+  height: 300px;
+  width: 600px;
+}
+
+.post-image {
+  flex: 1;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.post-title{
+  flex: 0.1
+}
