@@ -20,7 +20,6 @@ class App extends Component {
                         <Route exact path='/' component={Post}/>
                         <Route path='/account' component={Header}/>
                         <Route path='/info' component={Footer}/>
-                        <Route path='/:post_id' component={PostDetail}/>
                     </Switch>
                 </BrowserRouter>
             </div>
