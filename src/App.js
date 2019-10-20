@@ -11,11 +11,10 @@ function App() {
     <div className="App">
         <BrowserRouter>
             <Switch>
-                <Route path="/" exact component={Post} />
-                <Post/>
                 <Route path="/RegOrLog" exact component={RegOrLog} />
                 <ul><Link to="/components/RegOrLog" className="btn btn-primary">Sign In</Link></ul>
             </Switch>
+            <Post/>
         </BrowserRouter>
         <Footer/>
     </div>
