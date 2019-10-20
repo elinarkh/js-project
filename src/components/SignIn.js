@@ -9,6 +9,12 @@ class SignIn extends Component {
         password: ""
     };
 
+    /*
+    location will override the current location in the history stack, like server-side redirects (HTTP 3xx) do.<Route exact path="/">
+    {loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />}
+    </Route>
+    */
+
     handleChange = event => {
         this.setState({
             [event.target.name]: event.target.value
