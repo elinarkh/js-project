@@ -31,6 +31,7 @@ class Post extends Component {
                         <div className="post-block" key={post.id}>
                             <h3>{ post.title }</h3>
                             <div>{ post.description }</div>
+                            <img className="image" src={"" + this.props.image} alt="post-images"/>
                         </div>
                     )}
                 </div>

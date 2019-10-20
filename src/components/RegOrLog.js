@@ -1,4 +1,3 @@
-import Post from "./Post";
 import React from "react";
 import {BrowserRouter, Link, Route} from "react-router-dom";
 import SignUp from "./SignUp";
@@ -24,6 +23,7 @@ function RegOrLog() {
                         path="/signin"
                         component={SignIn}
                     />
+                    <Link to="/"><button>Go Back</button></Link>
                 </div>
             </BrowserRouter>
         </div>
