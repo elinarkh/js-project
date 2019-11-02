@@ -53,7 +53,6 @@ export const createPost = (data) => (dispatch, getState) => {
     )
 };
 
-/*
 export const getPost = (id) => (dispatch, getState) => {
 
     dispatch({
@@ -68,14 +67,16 @@ export const getPost = (id) => (dispatch, getState) => {
                     .text()
                     .then(
                         value => {
+                            //console.log(value)
                             const post = JSON.parse(value);
+                            //console.log(post)
                             dispatch({
                                 type: actionTypes.ACTION_GET_POST_BY_ID_SUCCESS,
                                 post,
+
                             });
                         }
                     );
             }
         )
 }
-*/

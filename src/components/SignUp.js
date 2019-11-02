@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
 import * as authActions from "../actions/authActions";
+import {Link} from 'react-router-dom';
 
 class SignUp extends Component {
 
@@ -10,6 +11,10 @@ class SignUp extends Component {
         email: ""
     };
 
+    componentWillMount() {
+        console.log('Component will mount!')
+    }
+
     handleChange = event => {
         this.setState({
             [event.target.name]: event.target.value
@@ -17,6 +22,7 @@ class SignUp extends Component {
     };
 
     handleSubmit = event => {
+        console.log(this.state)
         event.preventDefault();
         this.props.userPostFetch(this.state)
     };
@@ -24,7 +30,7 @@ class SignUp extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <h1>Sign Up For An Account</h1>
+                <h1>Sign Up</h1>
 
                 <label>Username</label>
                 <input
@@ -50,8 +56,7 @@ class SignUp extends Component {
                     value={this.state.email}
                     onChange={this.handleChange}
                 /><br/>
-
-                <input type='submit'/>
+                <Link to="/"><input type='submit' value="Submit"/></Link>
             </form>
         )
     }
@@ -59,6 +64,6 @@ class SignUp extends Component {
 
 const mapDispatchToProps = dispatch => ({
     userPostFetch: userInfo => dispatch(authActions.userPostFetch(userInfo))
-})
+});
 
 export default connect(null, mapDispatchToProps)(SignUp);

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as postActions from '../actions/postActions';
+import {Link, Route} from "react-router-dom";
+import PostDetail from "./PostDetail";
 
 class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            count : 0
         };
         this.handleCreatePost = this.handleCreatePost.bind(this);
     }
@@ -14,22 +16,32 @@ class Post extends Component {
     componentDidMount() {
         this.props.getPosts();
     }
+    /*
+        shouldComponentUpdate(nextProps, nextState){
+            return this.state.posts!==nextState.posts
+        }*/
 
     handleCreatePost() {
-        let data = {
-            title: "welcome to world",
-            body: "hello world",
-            userId: 1
-        }
+        let data = {}
         this.props.createPost(data);
     }
+
+    componentWillMount() {
+        console.log('Component will mount!')
+    }
+
     render() {
         return (
             <div className="post-container">
                 { this.props.posts.map(post =>
                     <div className="post-block" key={post.id}>
+                        <p>Visits: { this.state.count }</p>
                         <div className="post-image" style={{ backgroundImage: `url(${post.image})` }}/>
-                        <h2 className="post-title">{ post.title }</h2>
+                        <Link onClick={() => this.setState({ count: this.state.count + 1 })}
+                              to={`/post/${post.id}`}><h4 className="post-title">{ post.title }</h4></Link>
+                        <Route path="`/post/${post.id}`">
+                            <PostDetail post={ post } />
+                        </Route>
                     </div>
                 )}
                 <button onClick={this.handleCreatePost}>new post</button>
@@ -39,8 +51,7 @@ class Post extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    posts: state.post.posts,
-    //firstPost: state.post.firstPost
+    posts: state.post.posts
 });
 
 const mapDispatchToProps = {

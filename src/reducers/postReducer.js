@@ -15,30 +15,21 @@ const posts = (state = [], action) => {
   }
 };
 
-// const firstPost = (state = {}, action) => {
-//   switch (action.type) {
-//     case actionTypes.ACTION_GET_POSTS_SUCCESS:
-//       return action.posts[0];
-//     default:
-//       return state;
-//   }
-// }
-
-/*const post = (state = {}, action) => {
+const post = (state = {}, action) => {
   switch (action.type) {
     case actionTypes.ACTION_GET_POST_BY_ID_SUCCESS:
-      return action.post;
+      //console.log(action)
+      return {'post': action.post};
     case actionTypes.ACTION_GET_POST_BY_ID_FAILURE:
       return {};
     default:
       return state;
   }
-};*/
+};
 
 const postReducer = combineReducers({
   posts,
-  //firstPost,
-  //post
+  post
 });
 
 export default postReducer;

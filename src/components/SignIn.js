@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
 import * as authActions from "../actions/authActions";
+import {Link} from "react-router-dom";
 
 class SignIn extends Component {
 
@@ -8,12 +9,6 @@ class SignIn extends Component {
         username: "",
         password: ""
     };
-
-    /*
-    location will override the current location in the history stack, like server-side redirects (HTTP 3xx) do.<Route exact path="/">
-    {loggedIn ? <Redirect to="/dashboard" /> : <PublicHomePage />}
-    </Route>
-    */
 
     handleChange = event => {
         this.setState({
@@ -28,6 +23,7 @@ class SignIn extends Component {
 
     render() {
         return (
+
             <form onSubmit={this.handleSubmit}>
                 <h1>Login</h1>
 
@@ -48,7 +44,7 @@ class SignIn extends Component {
                     onChange={this.handleChange}
                 /><br/>
 
-                <input type='submit'/>
+                <Link to="/"><input type='submit'/></Link>
             </form>
         )
     }

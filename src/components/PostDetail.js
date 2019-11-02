@@ -1,40 +1,37 @@
-/*
-import React, {Component} from "react";
+import React, {useState , useEffect} from "react";
 import * as postActions from "../actions/postActions";
 import {connect} from "react-redux";
 
-class PostDetail extends Component {
 
-    constructor(props){
-        super(props)
-        this.state = {
+function PostDetail(props) {
+    const [data, setData] = useState({ hits: [] });
 
-        }
-    }
+    useEffect(() => {
+    const fetchData = async () => {
+        const data = await fetch(
+            `http://5da5c7ce57f48b0014fbad58.mockapi.io/api/posts/${1}`,
+        );
 
-    componentDidMount() {
-        this.props.getPost();
-    }
-
-    render() {
+        const result = await data.json();
+        setData(result);
+    };
+    fetchData();
+    }, []);
         return (
             <div className="post-detail">
                 <div>
-                    { this.props.posts.map(post =>
-                        <div className="post-block" key={post.id}>
-                            <div>{ post.title }</div>
-                            <div>{ post.description }</div>
-                            <div>{ post.image }</div>
-                        </div>
-                    )}
+                    <div className="post-block">
+                        <div>{ data.title }</div>
+                        <div>{ data.description }</div>
+                        <div className="post-image" style={{ backgroundImage: `url(${data.image })` }}/>
+                    </div>
                 </div>
             </div>
-        )
 
-    }
+        )
 }
 const mapStateToProps = (state) => ({
-    post: state.post.post
+    post: state.post
 })
 
 const mapDispatchToProps = {
@@ -46,4 +43,3 @@ export default connect(
     mapDispatchToProps
 )(PostDetail);
 
-*/

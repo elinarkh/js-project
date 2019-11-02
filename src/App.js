@@ -1,38 +1,34 @@
 import React, {Component} from 'react';
 import './App.css';
-import Post from "./components/Post";
-import Footer from "./components/Footer";
 import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
+import SignUp from "./components/SignUp";
+import SignIn from "./components/SignIn";
 import PostDetail from "./components/PostDetail";
-import Header from "./components/Header";
+import Post from "./components/Post";
+import RegOrLog from "./components/RegOrLog";
+import Footer from "./components/Footer";
+
 
 class App extends Component {
 
-    /*componentDidMount = () => {
-        this.props.getProfileFetch()
-    };*/
 
-    render() {
-        return (
-            <div className="App">
-                <BrowserRouter>
-                    <Switch>
-                        <Route exact path='/' component={Post}/>
-                        <Route path='/account' component={Header}/>
-                        <Route path='/info' component={Footer}/>
-                    </Switch>
-                </BrowserRouter>
-            </div>
-        );
+  render() {
+    return (
+       <BrowserRouter>
+           <Link to="/signup">Sign Up</Link>
+           <br/>
+           <Link to="/signin">Sign In</Link>
+           <Switch>
+               <Route exact path='/' component={Post}/>
+               <Route path='/signup' component={SignUp}/>
+               <Route path='/signin' component={SignIn}/>
+               <Route path='/post/:id' component={PostDetail}/>
+           </Switch>
+           <Footer/>
+       </BrowserRouter>
 
-    }
+    );
+  }
 }
-
-/*
-const mapDispatchToProps = dispatch => ({
-    getProfileFetch: () => dispatch(getProfileFetch())
-});
-
-export default connect(null, mapDispatchToProps)(App);*/
 
 export default App;
