@@ -11,18 +11,12 @@ function RegOrLog() {
                     <nav>
                         <div className="auth-header">
                             <Link to="/signup">SignUp</Link>
+                            <br/>
                             <Link to="/signin">SignIn</Link>
                         </div>
                     </nav>
-                    <Route
-                        path="/signup"
-                        component={SignUp}
-                        exact
-                    />
-                    <Route
-                        path="/signin"
-                        component={SignIn}
-                    />
+                    <Route path="/signup" component={SignUp}/>
+                    <Route path="/signin" component={SignIn}/>
                     <Link to="/"><button>Go Back</button></Link>
                 </div>
             </BrowserRouter>

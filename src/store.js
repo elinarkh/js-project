@@ -2,8 +2,6 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import rootReducer from './reducers/index';
-import {createPost} from "./actions/postActions";
-import {userLoginFetch} from "./actions/authActions";
 
 const configureStore = () => {
   const middlewares = [ thunk ];

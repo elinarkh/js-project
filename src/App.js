@@ -24,7 +24,6 @@ class App extends Component {
                <Route path='/signin' component={SignIn}/>
                <Route path='/post/:id' component={PostDetail}/>
            </Switch>
-           <Footer/>
        </BrowserRouter>
 
     );

@@ -16,10 +16,6 @@ class Post extends Component {
     componentDidMount() {
         this.props.getPosts();
     }
-    /*
-        shouldComponentUpdate(nextProps, nextState){
-            return this.state.posts!==nextState.posts
-        }*/
 
     handleCreatePost() {
         let data = {}
@@ -35,10 +31,8 @@ class Post extends Component {
             <div className="post-container">
                 { this.props.posts.map(post =>
                     <div className="post-block" key={post.id}>
-                        <p>Visits: { this.state.count }</p>
-                        <div className="post-image" style={{ backgroundImage: `url(${post.image})` }}/>
-                        <Link onClick={() => this.setState({ count: this.state.count + 1 })}
-                              to={`/post/${post.id}`}><h4 className="post-title">{ post.title }</h4></Link>
+                       <div className="post-image" style={{ backgroundImage: `url(${post.image})` }}/>
+                        <Link to={`/post/${post.id}`}><h4 className="post-title">{ post.title }</h4></Link>
                         <Route path="`/post/${post.id}`">
                             <PostDetail post={ post } />
                         </Route>
