@@ -6,6 +6,8 @@ import SignIn from "./components/SignIn";
 import PostDetail from "./components/PostDetail";
 import Post from "./components/Post";
 import {Button, Container, Nav} from "react-bootstrap";
+import CreatePost from "./components/CreatePost";
+import SignOut from "./components/SignOut";
 
 class App extends Component {
   render() {
@@ -35,12 +37,21 @@ class App extends Component {
                 </Link>
               </Nav.Link>
             </Nav.Item>
+            <Nav.Item>
+              <Nav.Link>
+                <Link to="/signout">
+                  <Button variant={"success"}>Sign Out</Button>
+                </Link>
+              </Nav.Link>
+            </Nav.Item>
           </Nav>
           <Switch>
             <Route exact path='/' component={Post}/>
             <Route path='/signup' component={SignUp}/>
             <Route path='/signin' component={SignIn}/>
+            <Route path='/signout' component={SignOut}/>
             <Route path='/post/:id' component={PostDetail}/>
+            <Route path='/create' component={CreatePost}/>
           </Switch>
         </Container>
       </BrowserRouter>

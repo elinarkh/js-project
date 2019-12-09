@@ -49,11 +49,11 @@ class SignUp extends Component {
           onChange={this.handleChange}
         /><br/>
 
-        <label>Email</label>
+        <label>Confirm Password</label>
         <input
-          name='email'
-          placeholder='Email'
-          value={this.state.email}
+          name='confirmation'
+          placeholder='confirmation'
+          value={this.state.confirmPassword}
           onChange={this.handleChange}
         /><br/>
         <Link to="/"><input type='submit' value="Submit"/></Link>

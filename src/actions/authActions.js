@@ -1,6 +1,6 @@
 import {login, register, tokenize} from "../api/authApi";
 import {ACTION_FAIL_USER, ACTION_LOGIN_USER, ACTION_LOGOUT_USER} from "../constants/actionTypes";
-import {TOKEN_KEY, API_URL} from "../const";
+import {TOKEN_KEY, MOCK_API} from "../const";
 
 export const userRegisterFetch = user => {
   return dispatch => {
@@ -87,7 +87,7 @@ const loginUser = userObj => ({
 
 export const me = (token) => (
   fetch(
-    `${API_URL}/users/me`,
+    `${MOCK_API}/users/me`,
     {
       method: 'GET',
       headers: {

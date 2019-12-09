@@ -4,6 +4,7 @@ import * as postActions from '../actions/postActions';
 import {Link, Route} from "react-router-dom";
 import PostDetail from "./PostDetail";
 import {Button, Card, Container} from "react-bootstrap";
+import CreatePost from "./CreatePost";
 
 class Post extends Component {
   constructor(props) {
@@ -30,7 +31,10 @@ class Post extends Component {
   render() {
     return (
       <Container style={{margin: 30}}>
-        <Button onClick={this.handleCreatePost}>Create Post</Button>
+        <Link to={`/create`}>
+          <Button>Create Post</Button>
+        </Link>
+
         <div className="d-flex flex-wrap justify-content-between">
           {this.props.posts.map(post =>
             <Card style={{ marginTop: 50, width: '18rem' }} key={post.id}>
@@ -45,10 +49,9 @@ class Post extends Component {
                 <Link to={`/post/${post.id}`}><Button variant={"primary"}>Details</Button></Link>
               </Card.Body>
 
-              <Route path="`/post/${post.id}`">
+              <Route path={`/post/${post.id}`}>
                 <PostDetail post={post}/>
               </Route>
-
             </Card>
           )}
         </div>

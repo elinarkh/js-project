@@ -31,7 +31,6 @@ class SignIn extends Component {
     }
   }
 
-
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -41,7 +40,7 @@ class SignIn extends Component {
           name='username'
           placeholder='Username'
           value={this.state.username}
-          onChange={this.handleChange}
+          onChange={this.handleChange('username')}
         /><br/>
         <label>Password</label>
         <input
@@ -49,7 +48,7 @@ class SignIn extends Component {
           name='password'
           placeholder='Password'
           value={this.state.password}
-          onChange={this.handleChange}
+          onChange={this.handleChange('password')}
         /><br/>
         <Link to="/"><input type='submit'/></Link>
       </form>
