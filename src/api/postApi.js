@@ -1,8 +1,8 @@
-import {MOCK_API} from "../const";
+import {API_URL} from "../const";
 
 export const getPosts = () => (
   fetch(
-    `${MOCK_API}/posts`,
+    `${API_URL}/posts`,
     {
       method: 'GET',
     }
@@ -11,7 +11,7 @@ export const getPosts = () => (
 
 export const getPost = (id) => (
   fetch(
-    `${MOCK_API}/posts/${id}`,
+    `${API_URL}/posts/${id}`,
     {
       method: 'GET',
     }
@@ -20,7 +20,7 @@ export const getPost = (id) => (
 
 export const createPost = (data) => (
   fetch(
-    `${MOCK_API}/posts`,
+    `${API_URL}/posts`,
     {
       method: 'POST',
       body: JSON.stringify({

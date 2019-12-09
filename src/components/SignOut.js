@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {userLogout} from "../actions/authActions";
 import {connect} from "react-redux";
+import {Redirect, Router} from "react-router-dom";
 
 
 class SignOut extends Component {
@@ -8,24 +9,32 @@ class SignOut extends Component {
   constructor(props) {
     super(props);
     console.log(props);
+    this.state = {
+      direct: false
+    }
   }
+
+  redirect = () => {
+    this.setState({ redirect: true });
+  };
 
   handleLogout = () => {
     this.props.userLogout();
   };
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log(this.props.auth);
-
-    if (!this.props.auth.authenticated) {
-      this.props.navigation.navigate('Auth');
-    }
-  }
-
   render() {
+    if (!this.props.auth.authenticated && this.state.redirect === true) {
+      this.setState({ redirect: false });
+      console.log("logged in");
+      return (
+        <Router>
+          <Redirect to="/signin" />
+        </Router>
+      );
+    }
     return (
-      <div>
-        <button title={'Logout'} onClick={this.handleLogout}/>
+      <div >
+        <button onClick={this.handleLogout}>Logout</button>
       </div>
     )
   }

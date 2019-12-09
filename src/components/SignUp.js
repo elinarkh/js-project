@@ -4,7 +4,6 @@ import * as authActions from "../actions/authActions";
 import {Link} from 'react-router-dom';
 
 class SignUp extends Component {
-
   state = {
     username: "",
     password: "",
@@ -51,8 +50,8 @@ class SignUp extends Component {
 
         <label>Confirm Password</label>
         <input
-          name='confirmation'
-          placeholder='confirmation'
+          name='confirmPassword'
+          placeholder='confirmPassword'
           value={this.state.confirmPassword}
           onChange={this.handleChange}
         /><br/>
