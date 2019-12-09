@@ -1,24 +1,24 @@
 export const getPosts = () => (
   fetch(
-    'http://event-search-akali.herokuapp.com/events',
+    'http://5da5c7ce57f48b0014fbad58.mockapi.io/api/posts',
     {
       method: 'GET',
     }
   )
-)
+);
 
 export const getPost = (id) => (
-    fetch(
-        `http://event-search-akali.herokuapp.com/events/${id}`,
-        {
-            method: 'GET',
-        }
-    )
-)
+  fetch(
+    `http://5da5c7ce57f48b0014fbad58.mockapi.io/api/posts/${id}`,
+    {
+      method: 'GET',
+    }
+  )
+);
 
 export const createPost = (data) => (
   fetch(
-    'http://event-search-akali.herokuapp.com/events',
+    'http://5da5c7ce57f48b0014fbad58.mockapi.io/api/posts',
     {
       method: 'POST',
       body: JSON.stringify({
@@ -30,4 +30,4 @@ export const createPost = (data) => (
       }
     }
   )
-)
+);

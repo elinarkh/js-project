@@ -55,28 +55,28 @@ export const createPost = (data) => (dispatch, getState) => {
 
 export const getPost = (id) => (dispatch, getState) => {
 
-    dispatch({
-        type: actionTypes.ACTION_GET_POST_BY_ID_STARTED
-    })
+  dispatch({
+    type: actionTypes.ACTION_GET_POST_BY_ID_STARTED
+  });
 
-    postApi
-        .getPost(id)
-        .then(
-            response => {
-                response
-                    .text()
-                    .then(
-                        value => {
-                            //console.log(value)
-                            const post = JSON.parse(value);
-                            console.log(post)
-                            dispatch({
-                                type: actionTypes.ACTION_GET_POST_BY_ID_SUCCESS,
-                                post,
+  postApi
+    .getPost(id)
+    .then(
+      response => {
+        response
+          .text()
+          .then(
+            value => {
+              //console.log(value)
+              const post = JSON.parse(value);
+              //console.log(post)
+              dispatch({
+                type: actionTypes.ACTION_GET_POST_BY_ID_SUCCESS,
+                post,
 
-                            });
-                        }
-                    );
+              });
             }
-        )
-}
+          );
+      }
+    )
+};

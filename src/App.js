@@ -5,27 +5,45 @@ import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import PostDetail from "./components/PostDetail";
 import Post from "./components/Post";
-import RegOrLog from "./components/RegOrLog";
-import Footer from "./components/Footer";
-
+import {Button, Container, Nav} from "react-bootstrap";
 
 class App extends Component {
-
-
   render() {
     return (
-       <BrowserRouter>
-           <Link to="/signup">Sign Up</Link>
-           <br/>
-           <Link to="/signin">Sign In</Link>
-           <Switch>
-               <Route exact path='/' component={Post}/>
-               <Route path='/signup' component={SignUp}/>
-               <Route path='/signin' component={SignIn}/>
-               <Route path='/post/:id' component={PostDetail}/>
-           </Switch>
-       </BrowserRouter>
+      <BrowserRouter>
+        <Container>
+          <Nav variant={"tabs"}>
+            <Nav.Item>
+              <Nav.Link>
+                <Link to="/">
+                  <Button variant="info">Home</Button>
+                </Link>
+              </Nav.Link>
+            </Nav.Item>
 
+            <Nav.Item>
+              <Nav.Link>
+                <Link to="/signup">
+                  <Button variant="primary">Sign Up</Button>
+                </Link>
+              </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link>
+                <Link to="/signin">
+                  <Button variant={"success"}>Sign In</Button>
+                </Link>
+              </Nav.Link>
+            </Nav.Item>
+          </Nav>
+          <Switch>
+            <Route exact path='/' component={Post}/>
+            <Route path='/signup' component={SignUp}/>
+            <Route path='/signin' component={SignIn}/>
+            <Route path='/post/:id' component={PostDetail}/>
+          </Switch>
+        </Container>
+      </BrowserRouter>
     );
   }
 }
