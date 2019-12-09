@@ -7,6 +7,7 @@ function PostDetail(props) {
     const [data, setData] = useState({ hits: [] });
 
     useEffect(() => {
+//        console.log(this.props.post)
     const fetchData = async () => {
         const data = await fetch(
             `http://5da5c7ce57f48b0014fbad58.mockapi.io/api/posts/${1}`,

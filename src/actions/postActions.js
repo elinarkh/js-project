@@ -69,7 +69,7 @@ export const getPost = (id) => (dispatch, getState) => {
                         value => {
                             //console.log(value)
                             const post = JSON.parse(value);
-                            //console.log(post)
+                            console.log(post)
                             dispatch({
                                 type: actionTypes.ACTION_GET_POST_BY_ID_SUCCESS,
                                 post,
