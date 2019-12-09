@@ -1,6 +1,6 @@
-import {login, tokenize} from "../api/authApi";
+import {login, register, tokenize} from "../api/authApi";
 import {ACTION_FAIL_USER, ACTION_LOGIN_USER, ACTION_LOGOUT_USER} from "../constants/actionTypes";
-import {AsyncStorage} from "react-native";
+import {TOKEN_KEY, API_URL} from "../const";
 
 export const userRegisterFetch = user => {
   return dispatch => {
@@ -18,7 +18,7 @@ export const userRegisterFetch = user => {
           console.log("failUser", response.error);
           return failUser('Internal server error');
         } else {
-          console.log("loginUser")
+          console.log("loginUser");
           return dispatch(loginUser({token: tokenize(user.username, user.password), username: user.username}));
         }
       }).catch(reason => {
@@ -46,10 +46,16 @@ export const userLoginFetch = user => {
     }
 };
 
+export const userLogout = () => {
+  return dispatch => {
+    dispatch(logoutUser());
+  };
+};
+
 export const checkUser = () => {
   return async dispatch => {
     try {
-      const token = await AsyncStorage.getItem(TOKEN_KEY);
+      const token = await localStorage.getItem(TOKEN_KEY);
       console.log('```', token);
       if (!token) {
         return dispatch(logoutUser());
@@ -64,7 +70,6 @@ export const checkUser = () => {
           console.log("user", user);
           return dispatch(loginUser(user));
         } else {
-          console.log("user logout", user);
           dispatch(logoutUser());
         }
       }
@@ -79,6 +84,18 @@ const loginUser = userObj => ({
   type: ACTION_LOGIN_USER,
   payload: userObj
 });
+
+export const me = (token) => (
+  fetch(
+    `${API_URL}/users/me`,
+    {
+      method: 'GET',
+      headers: {
+        "Authorization": `Basic ${token}`,
+      }
+    }
+  )
+);
 
 export const logoutUser = () => ({
   type: ACTION_LOGOUT_USER,

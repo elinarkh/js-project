@@ -10,23 +10,32 @@ class SignIn extends Component {
     password: ""
   };
 
-  handleChange = event => {
+  componentDidMount() {
+    console.log('componentDidMount');
+    this.props.checkUser();
+  }
+
+  handleChange = type => event => {
     this.setState({
-      [event.target.name]: event.target.value
+      [type]: event.nativeEvent.text
     });
   };
 
   handleSubmit = event => {
-    event.preventDefault();
     this.props.userLoginFetch(this.state)
   };
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.auth.authenticated) {
+      this.props.navigation.navigate('Main');
+    }
+  }
+
+
   render() {
     return (
-
       <form onSubmit={this.handleSubmit}>
         <h1>Login</h1>
-
         <label>Username</label>
         <input
           name='username'
@@ -34,7 +43,6 @@ class SignIn extends Component {
           value={this.state.username}
           onChange={this.handleChange}
         /><br/>
-
         <label>Password</label>
         <input
           type='password'
@@ -43,16 +51,19 @@ class SignIn extends Component {
           value={this.state.password}
           onChange={this.handleChange}
         /><br/>
-
         <Link to="/"><input type='submit'/></Link>
       </form>
     )
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  userLoginFetch: userInfo => dispatch(authActions.userLoginFetch(userInfo))
+const mapStateToProps = state => ({
+  ...state.auth,
 });
+const mapDispatchToProps = {
+  userLoginFetch: authActions.userLoginFetch,
+  checkUser: authActions.checkUser,
+};
 
-export default connect(null, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
 

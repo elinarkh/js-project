@@ -8,7 +8,7 @@ class SignUp extends Component {
   state = {
     username: "",
     password: "",
-    email: ""
+    confirmPassword: ""
   };
 
   componentWillMount() {
@@ -63,7 +63,7 @@ class SignUp extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  userPostFetch: userInfo => dispatch(authActions.userPostFetch(userInfo))
+  userPostFetch: userInfo => dispatch(authActions.userRegisterFetch(userInfo))
 });
 
 export default connect(null, mapDispatchToProps)(SignUp);
