@@ -6,6 +6,7 @@ import SignIn from "./components/SignIn";
 import PostDetail from "./components/PostDetail";
 import Post from "./components/Post";
 import {Button, Container, Nav} from "react-bootstrap";
+import CreatePost from "./components/CreatePost";
 
 class App extends Component {
   render() {
@@ -41,6 +42,7 @@ class App extends Component {
             <Route path='/signup' component={SignUp}/>
             <Route path='/signin' component={SignIn}/>
             <Route path='/post/:id' component={PostDetail}/>
+            <Route path='/create' component={CreatePost}/>
           </Switch>
         </Container>
       </BrowserRouter>

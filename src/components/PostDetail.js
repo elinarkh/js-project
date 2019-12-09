@@ -7,20 +7,25 @@ import {withRouter} from 'react-router';
 
 function PostDetail(props) {
   const [data, setData] = useState({hits: []});
+  const { id } = props.match.params;
+  const { getPost } = props;
 
   useEffect(() => {
-    const fetchData = async () => {
-      const { id } = props.match.params;
+    getPost({
+      id, setData
+    });
 
-      const data = await fetch(
-        `http://5da5c7ce57f48b0014fbad58.mockapi.io/api/posts/${id}`,
-      );
+    // const fetchData = async () => {
+    //   const data = await fetch(
+    //     `${API_URL}/posts/${id}`,
+    //   );
+    //
+    //   const result = await data.json();
+    //   setData(result);
+    // };
+    // fetchData();
+  }, [PostDetail, id]);
 
-      const result = await data.json();
-      setData(result);
-    };
-    fetchData();
-  }, []);
   return (
     <Container className={"d-flex flex-column"}>
       <img style={{height: 600}} src={data.image}/>

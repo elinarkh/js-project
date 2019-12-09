@@ -53,14 +53,13 @@ export const createPost = (data) => (dispatch, getState) => {
     )
 };
 
-export const getPost = (id) => (dispatch, getState) => {
-
+export const getPost = (props) => (dispatch) => {
   dispatch({
     type: actionTypes.ACTION_GET_POST_BY_ID_STARTED
   });
 
   postApi
-    .getPost(id)
+    .getPost(props.id)
     .then(
       response => {
         response
@@ -73,8 +72,8 @@ export const getPost = (id) => (dispatch, getState) => {
               dispatch({
                 type: actionTypes.ACTION_GET_POST_BY_ID_SUCCESS,
                 post,
-
               });
+              props.setData(post);
             }
           );
       }

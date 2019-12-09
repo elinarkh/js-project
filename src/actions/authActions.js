@@ -1,6 +1,8 @@
+import {API_URL} from "../const";
+
 export const userPostFetch = user => {
   return dispatch => {
-    return fetch("http://5da5c7ce57f48b0014fbad58.mockapi.io/api/users", {
+    return fetch(`${API_URL}/users`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -23,7 +25,7 @@ export const userPostFetch = user => {
 
 export const userLoginFetch = user => {
   return dispatch => {
-    return fetch("http://5da5c7ce57f48b0014fbad58.mockapi.io/api/userFetch", {
+    return fetch(`${API_URL}/userFetch`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',

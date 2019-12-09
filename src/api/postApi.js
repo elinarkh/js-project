@@ -1,6 +1,8 @@
+import {API_URL} from "../const";
+
 export const getPosts = () => (
   fetch(
-    'http://5da5c7ce57f48b0014fbad58.mockapi.io/api/posts',
+    `${API_URL}/posts`,
     {
       method: 'GET',
     }
@@ -9,7 +11,7 @@ export const getPosts = () => (
 
 export const getPost = (id) => (
   fetch(
-    `http://5da5c7ce57f48b0014fbad58.mockapi.io/api/posts/${id}`,
+    `${API_URL}/posts/${id}`,
     {
       method: 'GET',
     }
@@ -18,7 +20,7 @@ export const getPost = (id) => (
 
 export const createPost = (data) => (
   fetch(
-    'http://5da5c7ce57f48b0014fbad58.mockapi.io/api/posts',
+    `${API_URL}/posts`,
     {
       method: 'POST',
       body: JSON.stringify({
