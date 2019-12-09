@@ -1,22 +1,22 @@
 import {combineReducers} from "redux";
 
 const initialState = {
-    currentUser: {}
-}
+  currentUser: {}
+};
 
 const auth = (state = initialState, action) => {
-    switch (action.type) {
-        case 'LOGIN_USER':
-            return {...state, currentUser: action.payload};
-        case 'LOGOUT_USER':
-            return {...state, currentUser: {} };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case 'LOGIN_USER':
+      return {...state, currentUser: action.payload};
+    case 'LOGOUT_USER':
+      return {...state, currentUser: {}};
+    default:
+      return state;
+  }
 };
 
 const authReducer = combineReducers({
-    auth
+  auth
 });
 
 export default authReducer;

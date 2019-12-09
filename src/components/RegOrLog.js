@@ -4,24 +4,26 @@ import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 
 function RegOrLog() {
-    return (
-        <div className="App">
-            <BrowserRouter>
-                <div className="container">
-                    <nav>
-                        <div className="auth-header">
-                            <Link to="/signup">SignUp</Link>
-                            <br/>
-                            <Link to="/signin">SignIn</Link>
-                        </div>
-                    </nav>
-                    <Route path="/signup" component={SignUp}/>
-                    <Route path="/signin" component={SignIn}/>
-                    <Link to="/"><button>Go Back</button></Link>
-                </div>
-            </BrowserRouter>
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <div className="container">
+          <nav>
+            <div className="auth-header">
+              <Link to="/signup">SignUp</Link>
+              <br/>
+              <Link to="/signin">SignIn</Link>
+            </div>
+          </nav>
+          <Route path="/signup" component={SignUp}/>
+          <Route path="/signin" component={SignIn}/>
+          <Link to="/">
+            <button>Go Back</button>
+          </Link>
         </div>
-    );
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default RegOrLog;
